@@ -230,7 +230,7 @@ static void fsl_i2c_callback(I2C_Type *base, i2c_master_handle_t *handle, status
 {
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
-	if (kStatus_Success  == status) /** TODO */
+	if (kStatus_Success  == status)
 	{
 		if (I2C0 == base)
 		{

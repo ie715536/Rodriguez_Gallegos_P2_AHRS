@@ -17,6 +17,13 @@
 #include "task.h"
 #include "I2C_FreeRtos.h"
 
+typedef struct{
+	uint32_t header;
+	float x;
+	float  y;
+	float  z;
+}comm_msg_t;
+
 /* TODO: insert other definitions and declarations here. */
 
 void init_BMI160_task(void * args);
