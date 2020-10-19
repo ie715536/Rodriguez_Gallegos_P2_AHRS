@@ -36,7 +36,6 @@ void get_and_send_data_task(void * args);
 SemaphoreHandle_t BMI160_initialization;
 SemaphoreHandle_t UART_initialization;
 
-
 int main(void)
 {
 
@@ -122,9 +121,12 @@ void get_and_send_data_task(void * args)
 		message.header = MSSG_HEADER;
 		message.x = angles.roll;
 		message.y = angles.pitch;
-		message.y = angles.yaw;
-		freertos_uart_send(freertos_uart0, &message, sizeof(comm_msg_t));
-		vTaskDelay( pdMS_TO_TICKS(1000) );
+		message.z = angles.yaw;
+
+
+		freertos_uart_send(freertos_uart0, (uint8_t *)&message, sizeof(comm_msg_t));
+
+		vTaskDelay( pdMS_TO_TICKS(1000));
 	}
 }
 
