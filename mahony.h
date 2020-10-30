@@ -21,5 +21,5 @@ typedef struct
 
 MahonyAHRSEuler_t MahonyAHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
 MahonyAHRSEuler_t MahonyAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay, float az);
-
+void MahonyAHRGetEuler(MahonyAHRSEuler_t * euler);
 #endif /* MAHONY_H_ */

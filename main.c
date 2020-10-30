@@ -99,9 +99,10 @@ void get_and_send_data_task(void * args)
 {
 	bmi160_raw_data_t acc_data;
 	bmi160_raw_data_t gyro_data;
-	TickType_t xfactor = pdMS_TO_TICKS(1000);
+	TickType_t xfactor = pdMS_TO_TICKS(20);
 
 	xSemaphoreTake(BMI160_initialization, portMAX_DELAY);
+	vTaskDelay( pdMS_TO_TICKS(1000));
 	xSemaphoreTake(UART_initialization, portMAX_DELAY);
 
 	TickType_t  xLastWakeTime = xTaskGetTickCount();
@@ -126,7 +127,7 @@ void get_and_send_data_task(void * args)
 
 		freertos_uart_send(freertos_uart0, (uint8_t *)&message, sizeof(comm_msg_t));
 
-		vTaskDelay( pdMS_TO_TICKS(1000));
+		//vTaskDelay( pdMS_TO_TICKS(1000));
 	}
 }
 

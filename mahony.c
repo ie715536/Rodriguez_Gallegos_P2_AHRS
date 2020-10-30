@@ -58,10 +58,11 @@ MahonyAHRSEuler_t MahonyAHRSupdate(float gx, float gy, float gz, float ax, float
 	float halfex, halfey, halfez;
 	float qa, qb, qc;
 
+	MahonyAHRSEuler_t test;
 	// Use IMU algorithm if magnetometer measurement invalid (avoids NaN in magnetometer normalisation)
 	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		MahonyAHRSupdateIMU(gx, gy, gz, ax, ay, az);
-		return;
+		test = MahonyAHRSupdateIMU(gx, gy, gz, ax, ay, az);
+		return test;
 	}
 
 	// Compute feedback only if accelerometer measurement valid (avoids NaN in accelerometer normalisation)
